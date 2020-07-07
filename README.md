@@ -1,4 +1,5 @@
-# bestlang project
+<<<<<<< HEAD
+# UNCONFERENCE - Modern Java Cloud Development
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
