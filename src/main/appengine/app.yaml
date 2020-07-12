@@ -1,2 +1,6 @@
 runtime: java11
 instance_class: F1
+automatic_scaling:
+  min_instances: 0
+  max_instances: 2
+  target_throughput_utilization: 0.9
