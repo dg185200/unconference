@@ -100,8 +100,8 @@
           <artifactId>appengine-maven-plugin</artifactId>
           <version>2.2.0</version>
           <configuration>
-            <projectId>unconference-282120</projectId>
-            <version>0-0-1</version>
+            <projectId>unconference-282622</projectId>
+              <version>0-1-0</version>
             <artifact>${project.build.directory}/${project.build.finalName}-runner.jar</artifact>
           </configuration>
         </plugin>

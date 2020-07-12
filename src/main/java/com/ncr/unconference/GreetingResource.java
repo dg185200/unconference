@@ -1,27 +1,19 @@
 package com.ncr.unconference;
 
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 @Path("")
 public class GreetingResource {
 
-    @GET @Path("/hello")
+    private static final String MESSAGE = "<h1>hello, %s</h1>\n";
+
+    @GET @Path("/greet")
     @Produces(MediaType.TEXT_HTML)
-    public String hello() {
-        var message = "<h1>What is your favorite best programming language in your opinion?</h1>";
-        System.out.println("Tests");
-        return message;
+    public String hello(@QueryParam("name") final String name) {
+        return String.format(MESSAGE, name);
     }
-
-    @GET @Path("/world")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Language language() {
-        return new Language("my new user", "desdfsdfsdsc");
-    }
-
 }
