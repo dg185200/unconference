@@ -1,6 +1,7 @@
 runtime: java11
 instance_class: F1
 service: bestlang
+default_expiration: 5s
 automatic_scaling:
   min_instances: 0
   max_instances: 2

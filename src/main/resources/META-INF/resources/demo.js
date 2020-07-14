@@ -34,6 +34,20 @@ function init() {
             });
         });
     }
+
+    getVersion();
+}
+
+function getVersion() {
+  fetch('./version')
+    .then(function (response) {
+        response.text().then(function (versionNumber){
+          var mainFooter = document.getElementById("main-footer");
+          var version = document.createElement("p");
+          version.appendChild(document.createTextNode(versionNumber));
+          mainFooter.appendChild(version);
+        });
+    })
 }
 
 function renderResults(results) {
