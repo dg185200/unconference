@@ -2,112 +2,109 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>bestlang - 1.0.0-SNAPSHOT</title>
-    <style>
-        h1, h2, h3, h4, h5, h6 {
-            margin-bottom: 0.5rem;
-            font-weight: 400;
-            line-height: 1.5;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-        }
-
-        h2 {
-            font-size: 2rem
-        }
-
-        h3 {
-            font-size: 1.75rem
-        }
-
-        h4 {
-            font-size: 1.5rem
-        }
-
-        h5 {
-            font-size: 1.25rem
-        }
-
-        h6 {
-            font-size: 1rem
-        }
-
-        .lead {
-            font-weight: 300;
-            font-size: 2rem;
-        }
-
-        .banner {
-            font-size: 2.7rem;
-            margin: 0;
-            padding: 2rem 1rem;
-            background-color: #00A1E2;
-            color: white;
-        }
-
-        body {
-            margin: 0;
-            font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        }
-
-        code {
-            font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            font-size: 87.5%;
-            color: #e83e8c;
-            word-break: break-word;
-        }
-
-        .left-column {
-            padding: .75rem;
-            max-width: 75%;
-            min-width: 55%;
-        }
-
-        .right-column {
-            padding: .75rem;
-            max-width: 25%;
-        }
-
-        .container {
-            width: 100%;
-        }
-
-        li {
-            margin: 0.75rem;
-        }
-
-        .right-section {
-            margin-left: 1rem;
-            padding-left: 0.5rem;
-        }
-
-        .right-section h3 {
-            padding-top: 0;
-            font-weight: 200;
-        }
-
-        .right-section ul {
-            border-left: 0.3rem solid #00A1E2;
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-    </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./demo.css">
+        <script src="./demo.js"></script>
+    <meta charset="UTF-8">
+    <title>NCR Unconference Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="toolbar" class="toolbar">
+        <div class="ncr-icon">
+            <a id="O365_MainLink_TenantLogo" class="fd3e30cd539c12fb6e85a2c7f74d46bb.scss" title="NCR Corporation" aria-label="NCR Corporation" href="./"><img id="O365_MainLink_TenantLogoImg" alt="NCR Corporation" title="NCR Corporation" src="data:image/jpeg;base64,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"></a>
+        </div>
+        <div class="banner">
+            <span>Modern Cloud Java Development</span>
+        </div>
+     </div>
 
-<div class="container">
-    <h2>What is your favorite programming language:</h2>
-    <ul>
-        <li>C</li>
-        <li>C++</li>
-        <li>C#</li>
-        <li>JAva</li>
-    </ul>
-    <button>Submit</button>
-</div>
+    <div id="container">
+        <div id="voting">
+            <h2>Vote for your favorite Programming Language!</h2>
+                <div class="language">
+                    <img width="70px" src="images/c-logo.png"/>
+                    <p>Created in 1972, C is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system.
+                        By design, C provides constructs that map efficiently to typical machine instructions. It has found lasting use in applications previously coded in assembly language. 
+                    </p>
+                    <div class="button"><a href="#" id="c" class="submitButton">Vote</a></div>
+                </div>
 
+                <div class="language">
+                    <img width="80px" src="images/cpp-logo.png"/>
+                    <p>C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or "C with Classes".
+                    The language has expanded significantly over time, and modern C++ now has object-oriented, generic, and functional features in addition to facilities for low-level memory manipulation. It is almost always implemented as a compiled language.
+                    </p>
+                    <div class="button"><a href="#" id="c++" class="submitButton">Vote</a></div>
+                </div>
+
+                <div class="language">
+                    <img width="70px" src="images/csharp-logo.png"/>
+                    <p>C# is a general-purpose, multi-paradigm programming language encompassing strong typing, lexically scoped, imperative, declarative, functional, generic, object-oriented (class-based), and component-oriented programming disciplines.
+                        It was developed around 2000 by Microsoft as part of its .NET initiative and later approved as an international standard by Ecma (ECMA-334) in 2002 and ISO (ISO/IEC 23270) in 2003. 
+                    </p>
+                    <div class="button"><a href="#" id="c#" class="submitButton">Vote</a></div>
+                </div>
+
+                <div class="language">
+                    <img width="120px" src="images/golang-logo.png"/>
+                    <p>Go is a statically typed, compiled programming language designed at Google. Go is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency.
+                        Go was designed at Google to improve programming productivity in an era of multicore, networked machines and large codebases.
+                    </p>
+                    <div class="button"><a href="#" id="go" class="submitButton">Vote</a></div>
+                </div>
+                
+                <div class="language">
+                    <img width="160px" src="images/java-logo.png"/>
+                    <p>Java is a general-purpose programming language that is class-based, object-oriented, and designed to have as few implementation dependencies as possible.
+                        t is intended to let application developers write once, run anywhere, meaning that compiled Java code can run on all platforms that support Java without the need for recompilation. Java applications are typically compiled to bytecode that can run on any Java virtual machine (JVM) regardless of the underlying computer architecture.</p>
+                    <div class="button"><a href="#" id="java" class="submitButton">Vote</a></div>
+                </div>
+                
+                <div class="language">
+                    <img width="80px" src="images/js-logo.png"/>
+                    <p>Javascript is a programming language that conforms to the ECMAScript specification. JavaScript is high-level, often just-in-time compiled, and multi-paradigm. It has curly-bracket syntax, dynamic typing, prototype-based object-orientation, and first-class functions.
+                        Alongside HTML and CSS, JavaScript is one of the core technologies of the World Wide Web. JavaScript enables interactive web pages and is an essential part of web applications. 
+                    </p>
+                    <div class="button"><a href="#" id="javascript" class="submitButton">Vote</a></div>
+                </div>
+
+                <div class="language">
+                    <img width="160px" src="images/kotlin-logo.png"/>
+                    <p>Kotlin is a cross-platform, statically typed, general-purpose programming language with type inference. Kotlin is designed to interoperate fully with Java, and the JVM version of its standard library depends on the Java Class Library, but type inference allows its syntax to be more concise.</p>
+                    <div class="button"><a href="#" id="kotlin" class="submitButton">Vote</a></div>
+                </div>
+
+                <div class="language">
+                    <img width="80px" src="images/python-logo.jpeg"/>
+                    <p>Python is an interpreted, high-level, general-purpose programming language created by Guido van Rossum. Its language constructs and object-oriented approach aim to help programmers write clear, logical code for small and large-scale projects.
+                        Python is dynamically typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly, procedural), object-oriented, and functional programming. </p>
+                    <div class="button"><a href="#" id="python" class="submitButton">Vote</a></div>
+                </div>
+
+                <div class="language">
+                    <img width="60px" src="images/ruby-logo.png"/>
+                    <p>Ruby is an interpreted, high-level, general-purpose programming language. It was designed and developed in the mid-1990s by Yukihiro "Matz" Matsumoto in Japan. Ruby is dynamically typed and uses garbage collection. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming. </p>
+                    <div class="button"><a href="#" id="ruby" class="submitButton">Vote</a></div>
+                </div>
+
+                <div class="language">
+                    <img width="160px" src="images/swift-logo.png"/>
+                    <p>Swift is a general-purpose, multi-paradigm, compiled programming language developed by Apple Inc. for iOS, iPadOS, macOS, watchOS, tvOS, and Linux. Swift is designed to work with Apple's Cocoa and Cocoa Touch frameworks.
+                        It addresses some common programming errors like null pointer dereferencing and provides syntactic sugar to help avoid the pyramid of doom. Swift supports the concept of protocol extensibility, an extensibility system that can be applied to types, structs and classes.
+                    </p>
+                    <div class="button"><a href="#" id="swift" class="submitButton">Vote</a></div>
+                </div>
+        </div>
+        <div id="results" class="hidden"> 
+            <h2>Thank you for submitting your vote!</h2>
+            <h3>Results:</h3>
+            <canvas id="resultsChart" width="400" height="400"></canvas>   
+            <div class="button"><a href="#" id="refreshButton" class="refreshButton">Refresh Results</a></div>
+        </div>    
+    </div>   
+
+    <footer>Created by the CDM Team in BSP</footer>
 </body>
-</html>
+</html> 
