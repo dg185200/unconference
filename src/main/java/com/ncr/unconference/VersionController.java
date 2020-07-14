@@ -14,6 +14,6 @@ public class VersionController {
         if (version == null) {
             version = "development";
         }
-        return version;
+        return "v" + version;
     }
 }
