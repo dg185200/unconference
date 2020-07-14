@@ -103,7 +103,7 @@
           <version>2.2.0</version>
           <configuration>
             <projectId>${gcpProjectID}</projectId>
-              <version>${gaeVersion}</version>
+            <version>${gaeVersion}</version>
             <artifact>${project.build.directory}/${project.build.finalName}-runner.jar</artifact>
           </configuration>
         </plugin>
