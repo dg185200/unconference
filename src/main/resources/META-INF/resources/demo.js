@@ -1,3 +1,5 @@
+var httpRequest;
+
 window.addEventListener("load", function() {
   init();
 });
@@ -5,34 +7,60 @@ window.addEventListener("load", function() {
 function init() {
     document.getElementById('voting').onclick = function(e) {
         if (e.target.className === 'submitButton') {
-            fetch('./vote', {
-                method: 'post',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({language: e.target.id})            
-            })
-            .then(function (response) {
-                response.json().then(function(data) {
-                    renderResults(data.raw);
-                    document.getElementById('voting').classList.add('hidden');
-                    document.getElementById('results').classList.remove('hidden');
-                });
-            })
-            .catch(error => {
-                console.error('Could not submit your vote: ', error);
-            });
+            httpRequest = new XMLHttpRequest();
+            if (!httpRequest) {
+                alert('Cannot create an XMLHttpRequest instance');
+                return false;
+            }
+
+            document.getElementById('loading').classList.remove('hidden');
+
+            httpRequest.onreadystatechange = submitVote;
+            httpRequest.open('POST', './vote', true);
+            httpRequest.setRequestHeader('Accept', 'application/json');
+            httpRequest.setRequestHeader('Content-Type', 'application/json');
+            httpRequest.send(JSON.stringify({language: e.target.id}));
         }
     }
 
     document.getElementById('refreshButton').onclick = function(e) {
-        fetch('./results')
-        .then(function (response) {
-            response.json().then(function(data) {
-                renderResults(data.raw);
-            });
-        });
+        httpRequest = new XMLHttpRequest();
+        if (!httpRequest) {
+            alert('Cannot create an XMLHttpRequest instance');
+            return false;
+        }
+
+        document.getElementById('loading').classList.remove('hidden');
+
+        httpRequest.onreadystatechange = refreshResults;
+        httpRequest.open('GET', './results', true);
+        httpRequest.setRequestHeader('Accept', 'application/json');
+        httpRequest.setRequestHeader('Content-Type', 'application/json');
+        httpRequest.send();
+    }
+}
+
+function submitVote() {
+    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+        if (httpRequest.status === 200) {
+            renderResults(JSON.parse(httpRequest.responseText));
+            document.getElementById('voting').classList.add('hidden');
+            document.getElementById('results').classList.remove('hidden');
+            document.getElementById('loading').classList.add('hidden');
+        } else {
+            alert('Sorry, could not submit your vote, please try again later.');
+        }
+    }
+}
+
+function refreshResults() {
+    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+        if (httpRequest.status === 200) {
+            renderResults(JSON.parse(httpRequest.responseText));
+            document.getElementById('loading').classList.add('hidden');
+        } else {
+            alert('Sorry, could not submit your vote, please try again later.');
+        }
     }
 
     getVersion();
@@ -63,7 +91,7 @@ function renderResults(results) {
                 label: '',
                 backgroundColor: '#56a8ca',
                 borderColor: '#ffffff',
-                data: results
+                data: results.raw
             }],
             legend: {
                 display: true,
