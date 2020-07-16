@@ -28,8 +28,7 @@ public class VoteController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
-    public Results submitVote(Vote vote) {
-
+    public Results submitVote(Vote vote) throws InterruptedException {
         vote.language = vote.language.toLowerCase();
         vote.submitedOn = LocalDateTime.now();
         

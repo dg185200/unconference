@@ -7,9 +7,6 @@
         <script src="./demo.js"></script>
     <meta charset="UTF-8">
     <title>NCR Unconference Demo</title>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.7.2/bluebird.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/json3/3.3.3/json3.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/fetch/3.1.0/fetch.min.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -22,6 +19,8 @@
             <span>Modern Cloud Java Development</span>
         </div>
      </div>
+
+    <div id="loading" class="hidden"></div>
 
     <div id="container">
         <div id="voting">
@@ -107,7 +106,7 @@
             <div class="button"><a href="#" id="refreshButton" class="refreshButton">Refresh Results</a></div>
         </div>    
     </div>   
-
+    
     <footer>Created by the CDM Team in BSP</footer>
 </body>
 </html> 
