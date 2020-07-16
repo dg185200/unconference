@@ -38,6 +38,7 @@ function init() {
         httpRequest.setRequestHeader('Content-Type', 'application/json');
         httpRequest.send();
     }
+    getVersion();
 }
 
 function submitVote() {
